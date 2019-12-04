@@ -18,8 +18,8 @@ class Room:
         return f" Room-Name: {self.name}, Description: {self.description}, Directions: N: {self.n_to}, S: {self.s_to}, E: {self.e_to}, W: {self.w_to}"
 
 
-obj = Room("testFoyer", "testDescription")
-print("ROOM:", obj)
+objRoom = Room("testFoyer", "testDescription")
+print("ROOM:", objRoom)
 
 
 # The room should have name and description attributes.
