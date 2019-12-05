@@ -61,29 +61,64 @@ room['treasure'].items = item['key']
 # Make a new player object that is currently in the 'outside' room.
 playerName = input("Welcome Player 1, Please enter your name: ")
 print("Hello", playerName + "!")
-player = Player(playerName, room['outside'])
-#
+# empty array is referring to items in PLAYER CLASS
+# instantiated player here and passed in 3 things
+player = Player(playerName, room['outside'], [])
+# they empty array is like a backpack where you can store things (we instatiated it to none)
+# and you can also perform array methods on it like .append()
+
 while True:  # while the player is running the game
     # if room is not None:
     print("You are in the: ", player.current_room.name, "room")
     print(f"Room Description: ", player.current_room.description)
+    # look in the ROOM CLASS for items attribute
+    print(f"Available Items: ", player.current_room.items)
+
+    itemInput = input("Pick up available item? Y/N ")
+    validItemPickup = ["y", "n"]
+
+    # if itemInput in validItemPickup:
+    #     if itemInput not in validItemPickup:
+    #         print("not a valid command")
+    #     else:
+    #         selectedItem = player.item.__getattribute__(
+    #             f"{itemInput}"
+    #         )
+    if itemInput == "y":
+        player.inventory.append(player.current_room.items)
+        # print(f"Current Inventory: {player.inventory}")
+        player.check_inventory() #checking to see if the player actually has inventory
+        # print(f"{player.current_room.items.name} added")
+        player.current_room.items.on_take()  # ontake method from the ITEM CLASS
+        # player.current_room.items = None
+        print(
+            f"this room contains the following items: {player.current_room.items}")
 
     directionInput = input(
-        "Please choose a direction: n, s, w, e, OR press q to quit: ")
-    validDirection = ["n", "s", "w", "e", "q"]
+        "Please choose a direction: n, s, w, e, press d, see i, OR press q to quit: ")
+    validDirection = ["n", "s", "w", "e", "d", "i", "q"]
+
     if directionInput in validDirection:
         if directionInput == "q":
             print("Godbye, quitter!")
             break
+        elif directionInput == "d":
+            player.on_drop()  # bc this is in the PLAYER CLASS
+        elif directionInput == "i":
+            player.check_inventory()
         else:
             selectedRoom = player.current_room.__getattribute__(
-                f"{directionInput}_to")  # player takes name and current room
-            # directionInput giecs us nswe in __getattribute built in function
+                f"{directionInput}_to"
+                # f"{itemInput}" this will ask the player if they want to pick up item
+
+            )  # player takes name and current room
+            # directionInput givess us nswe in __getattribute built in function
             # print("selected room", selectedRoom.name)
             if selectedRoom is not None:  # if there is a selected room
                 player.current_room = selectedRoom
             else:
                 print("error")
+
 
 # ^ prints out current room name&description
 

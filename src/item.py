@@ -11,6 +11,8 @@ class Item:
     def __str__(self):
         return f"Name: {self.name}, Description: {self.description}"
 
+    def on_take(self):
+        print(f"You have picked up {self.name}")
 
 # objItem = Item("Hammer", "Heavy duty")
 # print("ITEM", objItem)

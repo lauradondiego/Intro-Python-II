@@ -15,7 +15,7 @@ class Room:
         self.items = items  # this item is the knife we wrote in the adv file on
 
     def __str__(self):  # dunder means double underline
-        str = f" Room-Name: {self.name}, Description of the room: {self.description}, {self.items}"
+        str = f" Room-Name: {self.name}, Description of the room: {self.description}, this room has: {self.items}"
 
 # itemsInRoom = ItemList("Knife", "It's sharp")
 # print("Items in Room", itemsInRoom)
