@@ -4,17 +4,18 @@
 
 class Room:
 
-    def __init__(self, name, description, n_to=None, s_to=None, e_to=None, w_to=None, items=None ): #=None if a person does not pass in direction
+    # =None if a person does not pass in direction
+    def __init__(self, name, description, n_to=None, s_to=None, e_to=None, w_to=None, items=None):
         self.name = name
         self.description = description
         self.n_to = n_to
         self.s_to = s_to
         self.e_to = e_to
         self.w_to = w_to
-        self.items = items # this item is the knife we wrote in the adv file on 
+        self.items = items  # this item is the knife we wrote in the adv file on
 
-    def __str__(self): #dunder means double underline
-        str = f" Room-Name: {self.name}, Description: {self.description}, {self.items}"
+    def __str__(self):  # dunder means double underline
+        str = f" Room-Name: {self.name}, Description of the room: {self.description}, {self.items}"
 
     # def getItem(self):
     #     return "Item in Room:" .join([item.name for item in self.items])

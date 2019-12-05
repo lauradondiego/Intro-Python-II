@@ -50,19 +50,20 @@ room['foyer'].items = item['hammer']
 
 
 # Make a new player object that is currently in the 'outside' room.
-playerName = input("please input your name")
+playerName = input("Welcome Player 1, Please enter your name: ")
+print("Hello", playerName + "!")
 player = Player(playerName, room['outside'])
 #
 while True:   #while the player is running the game
     # if room is not None:
-        print(player.current_room.name)
-        print(f"description: ", player.current_room.description)
+        print("You are in the: ", player.current_room.name, "room")
+        print(f"Room Description: ", player.current_room.description)
 
-        directionInput = input("please choose n, s, w, e, or q to quit")
+        directionInput = input("Please choose a direction: n, s, w, e, OR press q to quit: ")
         validDirection = ["n", "s", "w", "e", "q"]
         if directionInput in validDirection:
             if directionInput == "q":
-                print("goodbye")
+                print("Godbye, quitter!")
                 break
             else: 
                 selectedRoom = player.current_room.__getattribute__(f"{directionInput}_to") #player takes name and current room 
