@@ -3,8 +3,7 @@
 
 
 class Player:
-    name = ""
-    current_room = ""
+    
     # should this have the super() constructor to inherit all
     # properties of Room class?? (like: name, description)
 
@@ -16,5 +15,5 @@ class Player:
         return f"Name: {self.name}, Current-Room: {self.current_room}"
 
 
-objPlayer = Player("Laura", "Foyer")
-print("PLAYER INFO:", objPlayer)
+# objPlayer = Player("Laura", "Foyer")
+# print("PLAYER INFO:", objPlayer)

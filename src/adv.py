@@ -1,10 +1,11 @@
 from room import Room
-
+from player import Player
+from item import Item
 # Declare all the rooms
 
 room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+    'outside':  Room("Outside Cave Entrance", #name
+                     "North of you, the cave mount beckons"), #description
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -21,6 +22,11 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+item = {
+    'knife': Item("knife", "A rusted object"), #create an item using the blueprint I defined in ITEM CLASS
+        'hammer': Item("hammer", "a heavy duty weapon"),
+
+}
 
 # Link rooms together
 
@@ -33,11 +39,43 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# Link items together
+room['outside'].items = item['knife'] #item coming from line 24 in the ROOM CLASS file
+room['foyer'].items = item['hammer']
+
 #
 # Main
 #
 
+
+
 # Make a new player object that is currently in the 'outside' room.
+playerName = input("please input your name")
+player = Player(playerName, room['outside'])
+#
+while True:   #while the player is running the game
+    if room is not None:
+        print(player.current_room.name)
+        print(f"description: ", player.current_room.description)
+
+        directionInput = input("please choose n, s, w, e, or q to quit")
+        validDirection = ["n", "s", "w", "e", "q"]
+        if directionInput in validDirection:
+            if directionInput == "q":
+                print("goodbye")
+                break
+            else: 
+                selectedRoom = player.current_room.n_to #player takes name and current room 
+            print("selected room", selectedRoom.name)
+
+
+
+        break
+
+   # ^ prints out current room name&description
+
+
+
 
 # Write a loop that:
 #
