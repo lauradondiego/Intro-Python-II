@@ -54,7 +54,7 @@ playerName = input("please input your name")
 player = Player(playerName, room['outside'])
 #
 while True:   #while the player is running the game
-    if room is not None:
+    # if room is not None:
         print(player.current_room.name)
         print(f"description: ", player.current_room.description)
 
@@ -65,12 +65,13 @@ while True:   #while the player is running the game
                 print("goodbye")
                 break
             else: 
-                selectedRoom = player.current_room.n_to #player takes name and current room 
-            print("selected room", selectedRoom.name)
-
-
-
-        break
+                selectedRoom = player.current_room.__getattribute__(f"{directionInput}_to") #player takes name and current room 
+                #directionInput giecs us nswe in __getattribute built in function
+                # print("selected room", selectedRoom.name) 
+                if selectedRoom is not None: #if there is a selected room
+                    player.current_room = selectedRoom
+                else:
+                   print("error")
 
    # ^ prints out current room name&description
 
