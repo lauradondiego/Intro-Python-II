@@ -17,26 +17,6 @@ class Room:
     def __str__(self):  # dunder means double underline
         str = f" Room-Name: {self.name}, Description of the room: {self.description}, {self.items}"
 
-    # def getItem(self):
-    #     return "Item in Room:" .join([item.name for item in self.items])
-
-    # def getExits(self):
-    #     exit = []
-    #     if self.n_to is not None:
-    #         exit.append("n")
-    #     if self.s_to is not None:
-    #         exit.append("s")
-    #     if self.e_to is not None:
-    #         exit.append("e")
-    #     if self.w_to is not None:
-    #         exit.append("w")
-    #     return "possible exits:" .join(exit)
-
-
-#     def __str__(self):
-#         return f"Name: {self.name}, Description: {self.description}"
-
-
 # itemsInRoom = ItemList("Knife", "It's sharp")
 # print("Items in Room", itemsInRoom)
 

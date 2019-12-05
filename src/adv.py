@@ -1,11 +1,11 @@
 from room import Room
 from player import Player
 from item import Item
-# Declare all the rooms
 
+# Declare all the rooms
 room = {
-    'outside':  Room("Outside Cave Entrance", #name
-                     "North of you, the cave mount beckons"), #description
+    'outside':  Room("Outside Cave Entrance",  # name
+                     "North of you, the cave mount beckons"),  # description
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -22,12 +22,6 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-item = {
-    'knife': Item("knife", "A rusted object"), #create an item using the blueprint I defined in ITEM CLASS
-        'hammer': Item("hammer", "a heavy duty weapon"),
-
-}
-
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -39,14 +33,29 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# Declare all the items
+item = {  # you reference this using 'knife' and in the parens you have name/description
+    # create an item using the blueprint I defined in ITEM CLASS
+    'knife': Item("Knife", "A rusted crusty old dagger should help you get to the treasure."),
+    'hammer': Item("Hammer", "Use this heavy duty weapon to protect against enemies."),
+    'gloves': Item("Rubber Gloves", "These gloves will help cover up any fingerprints."),
+    'flashlight': Item("Flashlight", "When the night comes, use this tool to help guide you to the hidden treasure. "),
+    'key': Item("Golden Key", "You found the Golden Key! Use this to open up the treasure chest!"),
+
+}
+
 # Link items together
-room['outside'].items = item['knife'] #item coming from line 24 in the ROOM CLASS file
-room['foyer'].items = item['hammer']
+
+# item coming from blueprint in the ROOM CLASS file
+room['outside'].items = item['gloves']
+room['foyer'].items = item['knife']
+room['overlook'].items = item['flashlight']
+room['narrow'].items = item['hammer']
+room['treasure'].items = item['key']
 
 #
 # Main
 #
-
 
 
 # Make a new player object that is currently in the 'outside' room.
@@ -54,29 +63,29 @@ playerName = input("Welcome Player 1, Please enter your name: ")
 print("Hello", playerName + "!")
 player = Player(playerName, room['outside'])
 #
-while True:   #while the player is running the game
+while True:  # while the player is running the game
     # if room is not None:
-        print("You are in the: ", player.current_room.name, "room")
-        print(f"Room Description: ", player.current_room.description)
+    print("You are in the: ", player.current_room.name, "room")
+    print(f"Room Description: ", player.current_room.description)
 
-        directionInput = input("Please choose a direction: n, s, w, e, OR press q to quit: ")
-        validDirection = ["n", "s", "w", "e", "q"]
-        if directionInput in validDirection:
-            if directionInput == "q":
-                print("Godbye, quitter!")
-                break
-            else: 
-                selectedRoom = player.current_room.__getattribute__(f"{directionInput}_to") #player takes name and current room 
-                #directionInput giecs us nswe in __getattribute built in function
-                # print("selected room", selectedRoom.name) 
-                if selectedRoom is not None: #if there is a selected room
-                    player.current_room = selectedRoom
-                else:
-                   print("error")
+    directionInput = input(
+        "Please choose a direction: n, s, w, e, OR press q to quit: ")
+    validDirection = ["n", "s", "w", "e", "q"]
+    if directionInput in validDirection:
+        if directionInput == "q":
+            print("Godbye, quitter!")
+            break
+        else:
+            selectedRoom = player.current_room.__getattribute__(
+                f"{directionInput}_to")  # player takes name and current room
+            # directionInput giecs us nswe in __getattribute built in function
+            # print("selected room", selectedRoom.name)
+            if selectedRoom is not None:  # if there is a selected room
+                player.current_room = selectedRoom
+            else:
+                print("error")
 
-   # ^ prints out current room name&description
-
-
+# ^ prints out current room name&description
 
 
 # Write a loop that:

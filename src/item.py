@@ -12,5 +12,5 @@ class Item:
         return f"Name: {self.name}, Description: {self.description}"
 
 
-objItem = Item("Hammer", "Heavy duty")
-print("ITEM", objItem)
+# objItem = Item("Hammer", "Heavy duty")
+# print("ITEM", objItem)
