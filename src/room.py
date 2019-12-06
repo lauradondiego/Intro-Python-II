@@ -17,9 +17,6 @@ class Room:
     def __str__(self):  # dunder means double underline
         str = f" Room-Name: {self.name}, Description of the room: {self.description}, this room has: {self.items}"
 
-# itemsInRoom = ItemList("Knife", "It's sharp")
-# print("Items in Room", itemsInRoom)
-
 # The room should have name and description attributes.
 # The room should also have n_to, s_to, e_to, and w_to
 # attributes which point to the room in that respective direction.

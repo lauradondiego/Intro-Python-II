@@ -4,9 +4,6 @@
 
 class Player:
 
-    # should this have the super() constructor to inherit all
-    # properties of Room class?? (like: name, description)
-
     # NONE bc at begining of game they have nothing
     def __init__(self, name, current_room, inventory=None):
         self.name = name
@@ -26,9 +23,12 @@ class Player:
                 print('Item successfully removed\n')  # \n gives a new line
 
     def check_inventory(self):
-        if self.inventory:
-            print("you currently have\n")
+        if len(self.inventory) > 0:
+            print("Your inventory currently holds: ")
+
             for i in self.inventory:  # looping thru the inventory array
-                print(i.name) #the index of whatever the name is at that specified index
-            else:
-                print("You currently do not have any items")
+                # the index of whatever the name is at that specified index
+                print(i.name)
+        else:
+            print("You currently do not have any items")
+    

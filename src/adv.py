@@ -74,28 +74,20 @@ while True:  # while the player is running the game
     # look in the ROOM CLASS for items attribute
     print(f"Available Items: ", player.current_room.items)
 
-    itemInput = input("Pick up available item? Y/N ")
+    itemInput = input("Pick up available item? Y/N \n")
     validItemPickup = ["y", "n"]
 
-    # if itemInput in validItemPickup:
-    #     if itemInput not in validItemPickup:
-    #         print("not a valid command")
-    #     else:
-    #         selectedItem = player.item.__getattribute__(
-    #             f"{itemInput}"
-    #         )
     if itemInput == "y":
         player.inventory.append(player.current_room.items)
-        # print(f"Current Inventory: {player.inventory}")
-        player.check_inventory() #checking to see if the player actually has inventory
-        # print(f"{player.current_room.items.name} added")
+        player.check_inventory()  # checking to see if the player actually has inventory
         player.current_room.items.on_take()  # ontake method from the ITEM CLASS
-        # player.current_room.items = None
         print(
             f"this room contains the following items: {player.current_room.items}")
+    elif itemInput == "n":
+        print(f"Okay {playerName}, good luck without a weapon! \n")
 
     directionInput = input(
-        "Please choose a direction: n, s, w, e, press d, see i, OR press q to quit: ")
+        "Choose a direction: n, s, w, e, OR d to drop item, OR i to check inventory, OR q to quit: ")
     validDirection = ["n", "s", "w", "e", "d", "i", "q"]
 
     if directionInput in validDirection:
@@ -109,8 +101,6 @@ while True:  # while the player is running the game
         else:
             selectedRoom = player.current_room.__getattribute__(
                 f"{directionInput}_to"
-                # f"{itemInput}" this will ask the player if they want to pick up item
-
             )  # player takes name and current room
             # directionInput givess us nswe in __getattribute built in function
             # print("selected room", selectedRoom.name)
@@ -118,9 +108,6 @@ while True:  # while the player is running the game
                 player.current_room = selectedRoom
             else:
                 print("error")
-
-
-# ^ prints out current room name&description
 
 
 # Write a loop that:
